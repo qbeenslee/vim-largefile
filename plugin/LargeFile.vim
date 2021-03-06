@@ -1,7 +1,7 @@
 " LargeFile: Sets up an autocmd to make editing large files work with celerity
 "   Author:		Charles E. Campbell
 "   Date:		Mar 16, 2014
-"   Version:	6	ASTRO-ONLY
+"   Version:	7	ASTRO-ONLY
 "   Copyright:	see :help LargeFile-copyright
 " GetLatestVimScripts: 1506 1 :AutoInstall: LargeFile.vim
 "DechoRemOn
@@ -11,7 +11,7 @@
 if exists("g:loaded_LargeFile") || &cp
  finish
 endif
-let g:loaded_LargeFile = "v6"
+let g:loaded_LargeFile = "v7"
 let s:keepcpo          = &cpo
 set cpo&vim
 
@@ -73,7 +73,7 @@ fun! s:LargeFile(force,fname)
    augroup END
    let b:LargeFile_mode = 1
 "   call Decho("turning  b:LargeFile_mode to ".b:LargeFile_mode)
-   echomsg "***note*** handling a large file" 
+   "echomsg "***note*** handling a large file"
   endif
 "  call Dret("s:LargeFile")
 endfun
@@ -120,7 +120,7 @@ fun! s:Unlarge()
   if exists("b:LF_ulkeep") |let &ul    = b:LF_ulkeep |unlet b:LF_ulkeep |endif
   if exists("b:LF_wbkeep") |let &l:wb  = b:LF_wbkeep |unlet b:LF_wbkeep |endif
   if exists("b:LF_nmpkeep")
-   DoMatchParen          
+   DoMatchParen
    unlet b:LF_nmpkeep
   endif
   syn on
@@ -129,7 +129,7 @@ fun! s:Unlarge()
    au! * <buffer>
   augroup END
   call s:LargeFileLeave()
-  echomsg "***note*** stopped large-file handling"
+  "echomsg "***note*** stopped large-file handling"
 "  call Dret("s:Unlarge")
 endfun
 
